@@ -14,6 +14,7 @@
 		F016D4B226B9586100E46063 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F016D4B026B9586100E46063 /* LaunchScreen.storyboard */; };
 		F016D4C026B95A1200E46063 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F016D4BF26B95A1200E46063 /* LoginController.swift */; };
 		F016D4C226B9651700E46063 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F016D4C126B9651700E46063 /* Extensions.swift */; };
+		F029443326BAD41B00486824 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F029443226BAD41B00486824 /* AuthButton.swift */; };
 		F0DE587626B9A6F600989CE5 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DE587526B9A6F600989CE5 /* SignUpController.swift */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,7 @@
 		F016D4B326B9586100E46063 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F016D4BF26B95A1200E46063 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		F016D4C126B9651700E46063 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		F029443226BAD41B00486824 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
 		F0DE587526B9A6F600989CE5 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,6 +104,7 @@
 		F016D4BD26B9594A00E46063 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F029443226BAD41B00486824 /* AuthButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -184,6 +187,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0DE587626B9A6F600989CE5 /* SignUpController.swift in Sources */,
+				F029443326BAD41B00486824 /* AuthButton.swift in Sources */,
 				F016D4A626B9585900E46063 /* AppDelegate.swift in Sources */,
 				F016D4C026B95A1200E46063 /* LoginController.swift in Sources */,
 				F016D4A826B9585900E46063 /* SceneDelegate.swift in Sources */,
