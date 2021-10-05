@@ -78,7 +78,7 @@ class SignUpController: UIViewController {
         return button
     }()
     
-    private let alreadyHaveAccountButton: UIButton = {
+    let alreadyHaveAccountButton: UIButton = {
         let button = UIButton(type: .system)
         
         let attributedTitle = NSMutableAttributedString(string: "Already have an account? ", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16), NSAttributedString.Key.foregroundColor : UIColor.lightGray])
@@ -115,21 +115,19 @@ class SignUpController: UIViewController {
             
             let values = ["email": email,
                           "fullname" : fullname,
-                          "accountTypeIndex": accountTypeIndex] as [String : Any]
+                          "accountType": accountTypeIndex] as [String : Any]
             
             if accountTypeIndex == 1 {
                 let geofire = GeoFire(firebaseRef: REF_DRIVER_LOCATIONS)
                 guard let location = self.location else { return }
                 geofire.setLocation(location, forKey: uid) { error in
                     REF_USERS.child(uid).updateChildValues(values) { error, ref in
-                        guard let controller = UIApplication.shared.keyWindow?.rootViewController as? HomeController else { return }
-                        controller.configureUI()
                         self.uploadUserDataAndShowHomeController(uid: uid, values: values)
                     }
                 }
-                self.uploadUserDataAndShowHomeController(uid: uid, values: values)
             }
             
+            self.uploadUserDataAndShowHomeController(uid: uid, values: values)
         }
     }
     

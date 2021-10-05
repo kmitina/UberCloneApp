@@ -31,7 +31,6 @@ class LoginController: UIViewController {
     }()
     
     private lazy var passwordContainerView: UIView = {
-        
         let view = UIView().inputContainerView(image: #imageLiteral(resourceName: "ic_lock_outline_white_2x"), textField: passwordTextField)
         view.heightAnchor.constraint(equalToConstant: 50).isActive = true
         return view
@@ -81,8 +80,8 @@ class LoginController: UIViewController {
                 print("Failed to log user in with error \(error.localizedDescription)")
                 return
             }
-            
             guard let controller = UIApplication.shared.keyWindow?.rootViewController as? HomeController else { return }
+            
             controller.configure()
             self.dismiss(animated: true, completion: nil)
         }
@@ -118,4 +117,14 @@ class LoginController: UIViewController {
         navigationController?.navigationBar.isHidden = true
         navigationController?.navigationBar.barStyle = .black
     }
+}
+
+
+extension UIApplication {
+
+    /// The app's key window taking into consideration apps that support multiple scenes.
+    var keyWindowInConnectedScenes: UIWindow? {
+        return windows.first(where: { $0.isKeyWindow })
+    }
+
 }

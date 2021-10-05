@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>206596406308-l5sn89dpi3vjerit5vopji2i8m6aif90.apps.googleusercontent.com</string>
+	<string>201635909281-pqh2gurg47k5a7eokp77vnuk26672rck.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.206596406308-l5sn89dpi3vjerit5vopji2i8m6aif90</string>
+	<string>com.googleusercontent.apps.201635909281-pqh2gurg47k5a7eokp77vnuk26672rck</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDw9_7JiH_kGTZClu9cdcXLO0po6vLLEYo</string>
+	<string>AIzaSyA0lFDEja9tg9-vyBePm1PUAPk9uksXIII</string>
 	<key>GCM_SENDER_ID</key>
-	<string>206596406308</string>
+	<string>201635909281</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.kmitina.UberClone</string>
 	<key>PROJECT_ID</key>
-	<string>uberclone-cca7b</string>
+	<string>uberclone-22d76</string>
 	<key>STORAGE_BUCKET</key>
-	<string>uberclone-cca7b.appspot.com</string>
+	<string>uberclone-22d76.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:206596406308:ios:f9c3235bbc84dd68e76cb1</string>
+	<string>1:201635909281:ios:d95229aad2f9963e152ae0</string>
+	<key>DATABASE_URL</key>
+	<string>https://uberclone-22d76-default-rtdb.firebaseio.com</string>
 </dict>
 </plist>
