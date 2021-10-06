@@ -21,6 +21,7 @@
 		F070DC4526C15FB4000B32BD /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F070DC4426C15FB4000B32BD /* LocationCell.swift */; };
 		F0CA0E9F270C6B5800912E30 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CA0E9E270C6B5800912E30 /* Trip.swift */; };
 		F0CA1D1626D7A59700EDA3DE /* RideActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CA1D1526D7A59700EDA3DE /* RideActionView.swift */; };
+		F0D0D3DF270DCA1600B6D825 /* PickupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D0D3DE270DCA1600B6D825 /* PickupController.swift */; };
 		F0DE587626B9A6F600989CE5 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DE587526B9A6F600989CE5 /* SignUpController.swift */; };
 		F0EC7A0326C56B8500943EA2 /* DriverAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EC7A0226C56B8500943EA2 /* DriverAnnotation.swift */; };
 		F0EDA62826BD415A00AD2DA5 /* LocationInputActivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EDA62726BD415A00AD2DA5 /* LocationInputActivationView.swift */; };
@@ -47,6 +48,7 @@
 		F070DC4426C15FB4000B32BD /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		F0CA0E9E270C6B5800912E30 /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		F0CA1D1526D7A59700EDA3DE /* RideActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideActionView.swift; sourceTree = "<group>"; };
+		F0D0D3DE270DCA1600B6D825 /* PickupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickupController.swift; sourceTree = "<group>"; };
 		F0DE587526B9A6F600989CE5 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		F0EC7A0226C56B8500943EA2 /* DriverAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverAnnotation.swift; sourceTree = "<group>"; };
 		F0EDA62726BD415A00AD2DA5 /* LocationInputActivationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInputActivationView.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				F016D4BF26B95A1200E46063 /* LoginController.swift */,
 				F0DE587526B9A6F600989CE5 /* SignUpController.swift */,
 				F029443626BC0DDF00486824 /* HomeController.swift */,
+				F0D0D3DE270DCA1600B6D825 /* PickupController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				F029443726BC0DDF00486824 /* HomeController.swift in Sources */,
 				F0EDA62A26BD631A00AD2DA5 /* LocationInputView.swift in Sources */,
 				F0CA0E9F270C6B5800912E30 /* Trip.swift in Sources */,
+				F0D0D3DF270DCA1600B6D825 /* PickupController.swift in Sources */,
 				F0EC7A0326C56B8500943EA2 /* DriverAnnotation.swift in Sources */,
 				F016D4A626B9585900E46063 /* AppDelegate.swift in Sources */,
 				F016D4C026B95A1200E46063 /* LoginController.swift in Sources */,
