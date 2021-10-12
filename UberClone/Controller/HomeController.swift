@@ -53,6 +53,7 @@ class HomeController : UIViewController {
         didSet {
             guard let trip = trip else { return }
             let controller = PickupController(trip: trip)
+            controller.delegate = self
             self.present(controller, animated: true, completion: nil)
         }
     }
@@ -73,6 +74,10 @@ class HomeController : UIViewController {
         signOut()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        print("DEBUG: Trip state is \(trip?.state)")
+        guard let trip = trip else { return }
+    }
     // MARK: - Selectors
     
     @objc func actionButtonPressed() {
@@ -428,6 +433,8 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
     
 }
 
+// MARK: - RideActionViewDelegate
+
 extension HomeController: RideActionViewDelegate {
     func uploadTrip(_ view: RideActionView) {
         guard let pickupCoordinates = locationManager?.location?.coordinate else { return }
@@ -440,5 +447,14 @@ extension HomeController: RideActionViewDelegate {
             
             print("DEBUG: Did uplod trip successfully")
         }
+    }
+}
+
+// MARK: - PickupControllerDelegate
+
+extension HomeController: PickupControllerDelegate {
+    func didAcceptTrip(_ trip: Trip) {
+        self.trip?.state = .accepted
+        self.dismiss(animated: true, completion: nil)
     }
 }
