@@ -43,18 +43,26 @@ class HomeController : UIViewController {
             if user?.accountType == .passenger {
                 fetchDrivers()
                 configureLocationInputActivationView()
+                observeCurrentTrip()
             } else {
-               observeTrips()
+                observeTrips()
             }
         }
     }
     
     private var trip: Trip? {
         didSet {
-            guard let trip = trip else { return }
-            let controller = PickupController(trip: trip)
-            controller.delegate = self
-            self.present(controller, animated: true, completion: nil)
+            guard let user = user else { return }
+            
+            if user.accountType == .driver {
+                guard let trip = trip else { return }
+                let controller = PickupController(trip: trip)
+                controller.modalPresentationStyle = .fullScreen
+                controller.delegate = self
+                self.present(controller, animated: true, completion: nil)
+            } else {
+                print("DEBUG: Show ride action view for accepted trip..")
+            }
         }
     }
     
@@ -64,14 +72,14 @@ class HomeController : UIViewController {
         button.addTarget(self, action: #selector(actionButtonPressed), for: .touchUpInside)
         return button
     }()
- 
+    
     // MARK : - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         checkIfUserIsLoggedIn()
         enableLocationServices()
-//        signOut()
+        //        signOut()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,7 +96,7 @@ class HomeController : UIViewController {
             
             removeAnnotationsAndOverlays()
             mapView.showAnnotations(mapView.annotations, animated: true)
-
+            
             UIView.animate(withDuration: 0.3) {
                 self.inputActivationView.alpha = 1
                 self.configureActionButton(config: .showMenu)
@@ -98,6 +106,16 @@ class HomeController : UIViewController {
     }
     
     // MARK: - API
+    
+    func observeCurrentTrip() {
+        Service.shared.observeCurrentTrip { (trip) in
+            self.trip = trip
+            
+            if trip.state == .accepted {
+                self.shouldPresentLoadingView(false)
+            }
+        }
+    }
     
     func fetchUserData() {
         guard let currentUid = Auth.auth().currentUser?.uid else { return }
@@ -245,7 +263,7 @@ class HomeController : UIViewController {
             self.locationInputView.alpha = 0
             self.tableView.frame.origin.y = self.view.frame.height
             self.locationInputView.removeFromSuperview()
-           
+            
         }, completion: completion)
     }
     
@@ -379,7 +397,7 @@ extension HomeController: LocationInputViewDelegate {
         dismissLocationView { _ in
             UIView.animate(withDuration: 0.5, animations: {
                 self.inputActivationView.alpha = 1
-        })
+            })
         }
     }
     
@@ -416,11 +434,11 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
         generatePolyline(toDestination: destination)
         
         dismissLocationView { _ in
-           let annotation = MKPointAnnotation()
+            let annotation = MKPointAnnotation()
             annotation.coordinate = selectedPlacemark.coordinate
             self.mapView.addAnnotation(annotation)
             self.mapView.selectAnnotation(annotation, animated: true)
-      
+            
             let annotations = self.mapView.annotations.filter({ !$0.isKind(of: DriverAnnotation.self) })
             
             self.mapView.zoomToFit(annotation: annotations)
@@ -428,7 +446,7 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
             self.animateRideActionView(shouldShow: true, destination: selectedPlacemark)
         }
         
-
+        
     }
     
 }

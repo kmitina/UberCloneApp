@@ -35,6 +35,7 @@ struct Trip {
             guard let long = destinationCoordinates[1] as? CLLocationDegrees else { return }
             self.destinationCoordinates = CLLocationCoordinate2D(latitude: lat, longitude: long)
         }
+        
         self.driverUid = dictionary["driverUid"] as? String ?? ""
         
         if let state = dictionary["state"] as? Int {
