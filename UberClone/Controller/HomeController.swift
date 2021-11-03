@@ -345,6 +345,11 @@ private extension HomeController {
         let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 2000, longitudinalMeters: 2000)
         mapView.setRegion(region, animated: true)
     }
+    
+    func setCustomRegion(withCoordinate coordinates: CLLocationCoordinate2D) {
+        let region = CLCircularRegion(center: coordinates, radius: 25, identifier: "pickup")
+        locationManager?.startMonitoring(for: region)
+    }
 }
 
 // MARK: - MKMapViewDelegate
@@ -379,8 +384,18 @@ extension HomeController: MKMapViewDelegate {
 }
 // MARK: - LocationServices
 
-extension HomeController {
+extension HomeController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {
+        print("DEBUG: Did start monitoring for region \(region)")
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        print("DEBUG: Driver did enter passenger region..")
+    }
+    
     func enableLocationServices() {
+        locationManager?.delegate = self
+        
         switch CLLocationManager.authorizationStatus() {
         case .notDetermined:
             print("DEBUG: Not determined..")
@@ -510,6 +525,8 @@ extension HomeController: RideActionViewDelegate {
             
             self.actionButton.setImage(#imageLiteral(resourceName: "baseline_menu_black_36dp").withRenderingMode(.alwaysOriginal), for: .normal)
             self.actionButtonConfig = .showMenu
+            
+            self.inputActivationView.alpha = 0
         }
     }
 }
@@ -523,6 +540,8 @@ extension HomeController: PickupControllerDelegate {
         anno.coordinate = trip.pickupCoordinates
         mapView.addAnnotation(anno)
         mapView.selectAnnotation(anno, animated: true)
+        
+        setCustomRegion(withCoordinate: trip.pickupCoordinates)
         
         let placemark = MKPlacemark(coordinate: trip.pickupCoordinates)
         let mapItem = MKMapItem(placemark: placemark)
