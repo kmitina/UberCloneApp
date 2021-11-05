@@ -94,7 +94,7 @@ class SignUpController: UIViewController {
         super.viewDidLoad()
         
         configureUI()
-    print("DEBUG: Location is \(location)")
+        print("DEBUG: Location is \(String(describing: location))")
     
     }
     
