@@ -29,6 +29,9 @@
 		F0EF3AE426C312280087F4A8 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EF3AE326C312280087F4A8 /* Service.swift */; };
 		F0EF3AE626C3D6DB0087F4A8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EF3AE526C3D6DB0087F4A8 /* User.swift */; };
 		F0EF3AE826C3DDD20087F4A8 /* LocationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EF3AE726C3DDD20087F4A8 /* LocationHandler.swift */; };
+		F0F01347273ADC110016CD8E /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F01346273ADC110016CD8E /* MenuController.swift */; };
+		F0F01349273ADC1E0016CD8E /* ContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F01348273ADC1E0016CD8E /* ContainerController.swift */; };
+		F0F0134B273DC39A0016CD8E /* MenuHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F0134A273DC39A0016CD8E /* MenuHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +59,9 @@
 		F0EF3AE326C312280087F4A8 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		F0EF3AE526C3D6DB0087F4A8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F0EF3AE726C3DDD20087F4A8 /* LocationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHandler.swift; sourceTree = "<group>"; };
+		F0F01346273ADC110016CD8E /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
+		F0F01348273ADC1E0016CD8E /* ContainerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerController.swift; sourceTree = "<group>"; };
+		F0F0134A273DC39A0016CD8E /* MenuHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuHeader.swift; sourceTree = "<group>"; };
 		F5B367461DB2FD8E0A73A556 /* Pods-UberClone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UberClone.release.xcconfig"; path = "Target Support Files/Pods-UberClone/Pods-UberClone.release.xcconfig"; sourceTree = "<group>"; };
 		F69459064EBEEF586C953F4C /* Pods-UberClone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UberClone.debug.xcconfig"; path = "Target Support Files/Pods-UberClone/Pods-UberClone.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -146,8 +152,8 @@
 		F016D4BC26B9594600E46063 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				F016D4BF26B95A1200E46063 /* LoginController.swift */,
-				F0DE587526B9A6F600989CE5 /* SignUpController.swift */,
+				F0F01345273ADC000016CD8E /* SideMenu */,
+				F0F01344273ADBE70016CD8E /* Authentication */,
 				F029443626BC0DDF00486824 /* HomeController.swift */,
 				F0D0D3DE270DCA1600B6D825 /* PickupController.swift */,
 			);
@@ -162,6 +168,7 @@
 				F0EDA62726BD415A00AD2DA5 /* LocationInputActivationView.swift */,
 				F0EDA62926BD631900AD2DA5 /* LocationInputView.swift */,
 				F0CA1D1526D7A59700EDA3DE /* RideActionView.swift */,
+				F0F0134A273DC39A0016CD8E /* MenuHeader.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -174,6 +181,24 @@
 				F0CA0E9E270C6B5800912E30 /* Trip.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		F0F01344273ADBE70016CD8E /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				F016D4BF26B95A1200E46063 /* LoginController.swift */,
+				F0DE587526B9A6F600989CE5 /* SignUpController.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		F0F01345273ADC000016CD8E /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				F0F01346273ADC110016CD8E /* MenuController.swift */,
+				F0F01348273ADC1E0016CD8E /* ContainerController.swift */,
+			);
+			path = SideMenu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -301,7 +326,10 @@
 				F016D4A626B9585900E46063 /* AppDelegate.swift in Sources */,
 				F016D4C026B95A1200E46063 /* LoginController.swift in Sources */,
 				F070DC4526C15FB4000B32BD /* LocationCell.swift in Sources */,
+				F0F01347273ADC110016CD8E /* MenuController.swift in Sources */,
 				F0EF3AE826C3DDD20087F4A8 /* LocationHandler.swift in Sources */,
+				F0F01349273ADC1E0016CD8E /* ContainerController.swift in Sources */,
+				F0F0134B273DC39A0016CD8E /* MenuHeader.swift in Sources */,
 				F016D4A826B9585900E46063 /* SceneDelegate.swift in Sources */,
 				F0CA1D1626D7A59700EDA3DE /* RideActionView.swift in Sources */,
 				F0EF3AE626C3D6DB0087F4A8 /* User.swift in Sources */,
