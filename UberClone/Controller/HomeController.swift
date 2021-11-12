@@ -48,7 +48,7 @@ class HomeController : UIViewController {
     weak var delegate: HomeControllerDelegate?
     
     
-    private var user: User? {
+    var user: User? {
         didSet {
             locationInputView.user = user
             
@@ -217,12 +217,6 @@ class HomeController : UIViewController {
     
     // MARK: - Shared API
     
-    func fetchUserData() {
-        guard let currentUid = Auth.auth().currentUser?.uid else { return }
-        Service.shared.fetchUserData(uid: currentUid) { user in
-            self.user = user
-        }
-    }
     
     func checkIfUserIsLoggedIn() {
         if Auth.auth().currentUser?.uid == nil {
@@ -251,7 +245,6 @@ class HomeController : UIViewController {
     
     func configure() {
         configureUI()
-        fetchUserData()
     }
     
     fileprivate func configureActionButton(config: ActionButtonConfiguration) {

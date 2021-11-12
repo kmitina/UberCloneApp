@@ -11,6 +11,14 @@ private let reuseIdentifier = "MenuCell"
 
 class MenuController: UITableViewController {
     // MARK: - Properties
+    
+    var user: User? {
+        didSet {
+            guard let user = user else { return }
+            menuHeader.user = user
+        }
+    }
+    
     private lazy var menuHeader: MenuHeader = {
         let frame = CGRect(x: 0,
                            y: 0,
@@ -24,7 +32,7 @@ class MenuController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.frame = CGRect(x: 0, y: 0, width: 600, height: 1000)
+        view.frame = CGRect(x: 0, y: 0, width: 600, height: 900)
         view.backgroundColor = .white
     configureTableView()
         
