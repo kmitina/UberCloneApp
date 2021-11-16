@@ -89,13 +89,12 @@ class HomeController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        checkIfUserIsLoggedIn()
         enableLocationServices()
+        configureUI()
 //                signOut()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("DEBUG: Trip state is \(trip?.state)")
         guard let trip = trip else { return }
     }
     // MARK: - Selectors
@@ -215,25 +214,9 @@ class HomeController : UIViewController {
         }
     }
     
-    // MARK: - Shared API
-    
-    
-    func checkIfUserIsLoggedIn() {
-        if Auth.auth().currentUser?.uid == nil {
-            DispatchQueue.main.async {
-                let nav = UINavigationController(rootViewController: LoginController())
-                self.present(nav, animated: true, completion: nil)
-            }
-        } else {
-            configure()
-        }
-    }
+   
     
     // MARK: - Helper Functions
-    
-    func configure() {
-        configureUI()
-    }
     
     fileprivate func configureActionButton(config: ActionButtonConfiguration) {
         switch config {

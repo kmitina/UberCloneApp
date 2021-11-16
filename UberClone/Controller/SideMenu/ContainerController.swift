@@ -15,13 +15,15 @@ class ContainerController: UIViewController {
     private let homeController = HomeController()
     private var menuController: MenuController!
     private var isExpended = false
+    private let blackView = UIView()
+    private lazy var xOrigin = self.view.frame.width - 80
     
     private var user: User? {
         didSet {
             guard let user = user else { return }
             homeController.user = user
             configureMenuController(withUser: user)
-
+            
         }
     }
     
@@ -29,15 +31,36 @@ class ContainerController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .backgroundColor
-        configureHomeController()
-        fetchUserData()
-
+        checkIfUserIsLoggedIn()
+        
     }
     
+    override var prefersStatusBarHidden: Bool {
+        return isExpended
+    }
+    
+    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
+        return .slide
+    }
     // MARK: - Selectors
     
+    @objc func dismissMenu() {
+        isExpended = false
+        animateMenu(shouldExpand: isExpended)
+    }
+    
     // MARK: - API
+    
+    func checkIfUserIsLoggedIn() {
+        if Auth.auth().currentUser?.uid == nil {
+            DispatchQueue.main.async {
+                let nav = UINavigationController(rootViewController: LoginController())
+                self.present(nav, animated: true, completion: nil)
+            }
+        } else {
+            configure()
+        }
+    }
     
     func fetchUserData() {
         guard let currentUid = Auth.auth().currentUser?.uid else { return }
@@ -60,6 +83,12 @@ class ContainerController: UIViewController {
     
     // MARK: - Helper Functions
     
+    func configure() {
+        view.backgroundColor = .backgroundColor
+        configureHomeController()
+        fetchUserData()
+    }
+    
     func configureHomeController() {
         addChild(homeController)
         homeController.didMove(toParent: self)
@@ -74,22 +103,44 @@ class ContainerController: UIViewController {
         menuController.didMove(toParent: self)
         view.insertSubview(menuController.view, at: 0)
         menuController.delegate = self
-       
-   
+        configureBlackView()
+        
+        
+    }
+    
+    func configureBlackView() {
+        self.blackView.frame = CGRect(x: xOrigin,
+                                      y: 0,
+                                      width: 80,
+                                      height: self.view.frame.height)
+        blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        blackView.alpha = 0
+        view.addSubview(blackView)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissMenu))
+        blackView.addGestureRecognizer(tap)
     }
     
     func animateMenu(shouldExpand: Bool, completion: ((Bool) -> Void)? = nil) {
         if shouldExpand {
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
-                self.homeController.view.frame.origin.x = self.view.frame.width - 80
+                self.homeController.view.frame.origin.x = self.xOrigin
+                self.blackView.alpha = 1
             }, completion: nil)
         } else {
+            self.blackView.alpha = 0
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
                 self.homeController.view.frame.origin.x = 0
             }, completion: completion)
         }
+        animateStatusBar()
     }
     
+    func animateStatusBar() {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+            self.setNeedsStatusBarAppearanceUpdate()
+        }, completion: nil)
+    }
 }
 
 // MARK: - HomeControllerDelegate
