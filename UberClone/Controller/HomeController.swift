@@ -235,6 +235,7 @@ class HomeController : UIViewController {
     
     func configureSavedUserLocations() {
         guard let user = user else { return }
+        savedLocations.removeAll()
         if let homeLocation = user.homeLocation {
             geocodeAddressString(address: homeLocation)
         }
@@ -567,7 +568,7 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedPlacemark = searchResults[indexPath.row]
+        let selectedPlacemark = indexPath.section == 0 ? savedLocations[indexPath.row] : searchResults[indexPath.row]
         configureActionButton(config: .dismissActionView)
         
         let destination = MKMapItem(placemark: selectedPlacemark)
